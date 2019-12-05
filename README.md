@@ -1,7 +1,7 @@
 # Spring-Mybatis-Blog
 #### 나만의 블로그 만들기 Spring+Mybatis+MySQL
 
-- git주소 : <https://github.com/suhun918/Spring-Mybatis-Blogl>
+- git주소 : <https://github.com/suhun918/Spring-Mybatis-Blog>
 
 ![blog](main.png)
 
