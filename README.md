@@ -33,6 +33,3 @@ CREATE TABLE post(
     foreign key (userId) references user (id)
 ) engine=InnoDB default charset=utf8;
 ```
-
-#### 5. 실행 영상
--youtube주소 : <https://www.youtube.com/watch?v=R0NvMR7JltE>
