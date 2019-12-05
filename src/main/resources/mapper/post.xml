@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- repository 패키지 경로.내xml파일명Repository 로생성 -->
+<mapper namespace="com.cos.blog.repository.PostRepository">
+<!-- 게시판 다 긁어 올 것이니까 findAll -->
+	<select id="findAll" resultType="com.cos.blog.model.Post">
+		<!-- SELECT * FROM post ORDER BY id DESC -->
+		SELECT * FROM post p, user u WHERE p.userID = u.id ORDER BY p.id DESC 		
+	</select>
+	
+	<select id="findByPage" resultType="com.cos.blog.model.Post">
+		SELECT * FROM post p, user u WHERE p.userID = u.id ORDER BY p.id DESC limit #{page}, 4		
+	</select> 
+	
+	<select id="findById" resultType="com.cos.blog.model.Post">
+		<!-- SELECT * FROM post WHERE id = #{id} -->
+		SELECT * FROM post p, user u WHERE p.userId = u.id AND p.id = #{id} 
+	</select>
+	
+	
+
+	<insert id="save">
+	<!-- 줄 바꿀때 한칸 띄우고 엔터쳐라 -->
+		INSERT INTO post(title, content, userId, createDate) 
+		VALUES(#{title},#{content},#{userId},now())
+	</insert>
+	
+	<update id="update">
+		UPDATE post SET title = #{title}, content = #{content} 
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM post WHERE id = #{id}
+	</delete>
+	
+</mapper>

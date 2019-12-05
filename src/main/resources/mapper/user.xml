@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- repository 패키지 경로.내xml파일명Repository 로생성 -->
+<mapper namespace="com.cos.blog.repository.UserRepository">
+<!-- 게시판 다 긁어 올 것이니까 findAll -->
+	<select id="findAll" resultType="com.cos.blog.model.User">
+		SELECT * FROM user ORDER BY id DESC
+	</select>
+	
+	<select id="findById" resultType="com.cos.blog.model.User">
+		SELECT * FROM user WHERE id = #{id}
+	</select>
+	
+	<update id = "upload">
+		UPDATE user SET userProfile = #{userProfile} WHERE id = #{id}
+	</update>
+	
+	<select id="findByUsernameAndPassword" resultType="com.cos.blog.model.User">
+		SELECT * FROM user WHERE username = #{username} AND password = #{password}
+	</select>
+	
+	<insert id="save">
+	<!-- 줄 바꿀때 한칸 띄우고 엔터쳐라 -->
+		INSERT INTO user(username, password, email, createDate) 
+		VALUES(#{username},#{password},#{email},now())
+	</insert>
+</mapper>
